@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EXTRADIMENSIONAL</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#05060a;cursor:none;display:block}
+</style>
+</head>
+<body>
+<canvas id="c" width="1280" height="720"></canvas>
+<!--
+  EXTRADIMENSIONAL — plain classic scripts, loaded in order; no modules, no build step, works from file://.
+  Everything lives on window.XD.  See MODDING.md for the file map and how to add content.
+
+  1) ENGINE: defines the registries (XD.defineEnemy / definePattern / defineBoss / defineStage / ...) and the systems.
+-->
+<script src="js/core.js"></script>      <!-- namespace, constants, state, input, registries, asset loader -->
+<script src="js/audio.js"></script>     <!-- sound effects + generative music -->
+<script src="js/fx.js"></script>        <!-- shake, particles, explosions, popups, banners, score -->
+<script src="js/bullets.js"></script>   <!-- bullets + emitters, lasers, walls, player shots, shards -->
+<script src="js/pickups.js"></script>   <!-- pickup drops / collection -->
+<script src="js/enemies.js"></script>   <!-- spawn, damage, death, movement behaviours, update -->
+<script src="js/bosses.js"></script>    <!-- phased boss engine -->
+<script src="js/player.js"></script>    <!-- ship, phase drive -->
+<script src="js/arsenal.js"></script>   <!-- main guns, charge shot, tether drone, absorb burst -->
+<script src="js/stage.js"></script>     <!-- run / stage flow, stage-script helpers -->
+<script src="js/sprites.js"></script>   <!-- procedural sprites, image art, backdrop -->
+<script src="js/render.js"></script>    <!-- world rendering -->
+<script src="js/hud.js"></script>       <!-- HUD, title, overlays, victory -->
+<script src="js/debug.js"></script>     <!-- window.__game test hooks -->
+<!-- 2) DATA: all content. Add your own files here (after the engine, before main.js). -->
+<script src="data/assets.js"></script>
+<script src="data/systems.js"></script>
+<script src="data/weapons.js"></script>   <!-- main guns + drone / charge / absorb tuning (before pickups: weapons register their pickups) -->
+<script src="data/pickups.js"></script>
+<script src="data/patterns.js"></script>
+<script src="data/enemies.js"></script>
+<script src="data/bosses.js"></script>
+<script src="data/stages.js"></script>
+<!-- MODS go here. The worked example from MODDING.md (an enemy, a pattern, a pickup, a weapon, a boss and a 4th stage):
+     remove the comment marks around the next line and reload. If something of yours does not appear, press F12 —
+     the console names the id that is wrong. -->
+<!-- <script src="mods/example/example.js"></script> -->
+<!-- 3) BOOT: builds sprites from the registries and starts the loop. Must be last. -->
+<script src="js/main.js"></script>
+</body>
+</html>
